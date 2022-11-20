@@ -1,19 +1,17 @@
 package dux.tennis_tournament.controllers;
 
-import dux.tennis_tournament.models.Match;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MatchController extends Controller implements Initializable {
     @FXML
@@ -58,16 +56,19 @@ public class MatchController extends Controller implements Initializable {
     private Label set5Player2;
     @FXML
     private Label tourNameLabel;
+    private final int TIME_DELAY = 1000;
 
-    public MatchController(){
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        match.randomServe();
+//        match.randomServe();
         initializeLabels();
-        initializeAnimations();
+        tennisBall1.setVisible(false);
+        tennisBall1.setVisible(false);
 
+        System.out.println("prob p1 " + match.getPlayer(0).getProbToWin());
+        System.out.println("prob p2 " + match.getPlayer(1).getProbToWin());
+
+        startMatch();
     }
 
     private void initializeLabels(){
@@ -76,10 +77,61 @@ public class MatchController extends Controller implements Initializable {
         namePlayer2.setText(match.getPlayer(1).getName());
     }
 
-    private void initializeAnimations(){
-        if(match.getPlayer(0).isServeTurn())    tennisBall1.setVisible(true);
-        else tennisBall2.setVisible(true);
+    private void changeAnimation(){
+        if(match.getPlayer(0).isServeTurn()) {
+            tennisBall1.setVisible(true);
+            tennisBall2.setVisible(false);
+        }
+        else{
+            tennisBall1.setVisible(false);
+            tennisBall2.setVisible(true);
+        }
+
 
     }
+
+    private void startMatch(){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> match.randomServe());
+                Platform.runLater(() -> changeAnimation());
+                Platform.runLater(() -> generatePoints());
+                //checkGame();
+
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 1000, TIME_DELAY);
+    }
+    private void generatePoints(){
+
+        Random random = new Random();
+        int rdm_int = random.nextInt(1, 99);
+
+        if(rdm_int < match.getPlayer(0).getProbToWin()){
+            match.getPlayer(0).addPoints();
+            pointsPlayer1.setText(Integer.toString(match.getPlayer(0).getPoints()));
+        }
+        else{
+            match.getPlayer(1).addPoints();
+            pointsPlayer2.setText(Integer.toString(match.getPlayer(1).getPoints()));
+        }
+    }
+
+    private void checkGame(){
+        if (match.getPlayer(0).getPoints() == 50 && match.getPlayer(1).getPoints() < 40){
+            match.getPlayer(0).addGamesWon();
+            match.getPlayer(0).resetPoint();
+            match.getPlayer(1).resetPoint();
+        }
+        else if(match.getPlayer(1).getPoints() == 50 && match.getPlayer(0).getPoints() < 40){
+            match.getPlayer(1).addGamesWon();
+            match.getPlayer(1).resetPoint();
+            match.getPlayer(0).resetPoint();
+        }
+    }
+
     public void salir(ActionEvent event){ System.exit(0);}
 }

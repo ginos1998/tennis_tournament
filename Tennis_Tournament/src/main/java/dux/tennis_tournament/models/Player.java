@@ -16,19 +16,23 @@ public class Player {
     private int setsWon;
     private int gamesWon;
     private int points;
+    private int pointsWon;
     private ArrayList<Integer> prevSetsWon;
+    private ArrayList<Integer> gamePoints;
 
     /**
      * Constructor to initialize player's attributes
      */
     public Player() {
+        gamePoints = new ArrayList<>();
+        gamePoints.add(15);
+        gamePoints.add(30);
+        gamePoints.add(40);
+        gamePoints.add(50);
         setName("none");
-        setPoints(0);
-        setGamesWon(0);
         setWinner(false);
         setServeTurn(false);
         setProbToWin(0);
-        setSetsWon(0);
         prevSetsWon = new ArrayList<>();
     }
 
@@ -87,16 +91,23 @@ public class Player {
             this.probToWin = 50;
     }
 
-    public void setSetsWon(int setsWon) {
-        this.setsWon = setsWon;
+    public void addSetsWon() {
+        this.setsWon++;
     }
 
-    public void setGamesWon(int gamesWon) {
-        this.gamesWon = gamesWon;
+    public void addGamesWon() {
+        this.gamesWon++;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
+    public void addPoints() {
+        this.points += 10;
+        //this.points = gamePoints.get(pointsWon);
+        pointsWon++;
+    }
+
+    public void resetPoint(){
+        this.pointsWon = 0;
+        this.points = 0;
     }
 
     public void setPrevSetsWon(ArrayList<Integer> prevSetsWon) {

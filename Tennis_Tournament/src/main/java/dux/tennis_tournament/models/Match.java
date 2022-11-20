@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Match {
-
+    private final int MIN_PROB = 1;
+    private final int MAX_PROB = 99;
     private boolean deuce;
     private boolean tieBreak;
     private int currentSets;
     private String tournamentName;
     private ArrayList<Player> players;
+
 
     public Match(Player player_1, Player player_2) {
         players = new ArrayList<>();
@@ -73,8 +75,17 @@ public class Match {
     public void randomServe(){
         Random random = new Random();
         int rdm_int = random.nextInt(10);
-        if(rdm_int <= 5)    getPlayer(0).setServeTurn(true);
-        else getPlayer(1).setServeTurn(true);
-        System.out.println(rdm_int);
+        if(rdm_int <= 5){
+            getPlayer(0).setServeTurn(true);
+            getPlayer(1).setServeTurn(false);
+        }
+        else{
+            getPlayer(0).setServeTurn(false);
+            getPlayer(1).setServeTurn(true);
+        }
     }
+
+    /*
+    DEJO LA IDEA...
+     */
 }
