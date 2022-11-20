@@ -117,9 +117,7 @@ public class Player {
         this.points = gamePoints.get(pointsWon);
     }
 
-    public void setPrevSetsWon(ArrayList<Integer> prevSetsWon) {
-        this.prevSetsWon = prevSetsWon;
-    }
+
 
 
 

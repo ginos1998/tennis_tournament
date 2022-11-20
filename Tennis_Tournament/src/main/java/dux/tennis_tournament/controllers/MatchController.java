@@ -8,10 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class MatchController extends Controller implements Initializable {
     @FXML
@@ -59,6 +56,9 @@ public class MatchController extends Controller implements Initializable {
     private final int TIME_DELAY = 250;
     private Timer timer;
     private TimerTask task;
+    private ArrayList<Label> player1SetsLabels;
+    private ArrayList<Label> player2SetsLabels;
+    private int n = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,6 +77,20 @@ public class MatchController extends Controller implements Initializable {
         tourNameLabel.setText(tournament.getName());
         namePlayer1.setText(match.getPlayer(0).getName());
         namePlayer2.setText(match.getPlayer(1).getName());
+
+        player1SetsLabels = new ArrayList<>();
+        player1SetsLabels.add(set1Player1);
+        player1SetsLabels.add(set2Player1);
+        player1SetsLabels.add(set3Player1);
+        player1SetsLabels.add(set4Player1);
+        player1SetsLabels.add(set5Player1);
+
+        player2SetsLabels = new ArrayList<>();
+        player2SetsLabels.add(set1Player2);
+        player2SetsLabels.add(set2Player2);
+        player2SetsLabels.add(set3Player2);
+        player2SetsLabels.add(set4Player2);
+        player2SetsLabels.add(set5Player2);
     }
 
     private void changeAnimation(){
@@ -104,7 +118,6 @@ public class MatchController extends Controller implements Initializable {
                 Platform.runLater(() -> generatePoints());
                 Platform.runLater(() -> checkPoints());
                 Platform.runLater(() -> checkGames());
-
             }
         };
 
@@ -166,19 +179,31 @@ public class MatchController extends Controller implements Initializable {
         gamesPlayer2.setText(Integer.toString(match.getPlayer(1).getGamesWon()));
         pointsPlayer2.setText(match.getPlayer(1).getPoints());
 
+
+
     }
 
     private void checkGames(){
-        if(match.getPlayer(0).getGamesWon() == 8){
+        if(match.getPlayer(0).getGamesWon() == 7){
+            updateSetsTable();
             match.getPlayer(0).resetGamesWon();
             match.getPlayer(1).resetGamesWon();
             match.getPlayer(0).addSetsWon();
         }
-        else if (match.getPlayer(1).getGamesWon() == 8){
+        else if (match.getPlayer(1).getGamesWon() == 7){
+            updateSetsTable();
             match.getPlayer(0).resetGamesWon();
             match.getPlayer(1).resetGamesWon();
             match.getPlayer(1).addSetsWon();
         }
+    }
+
+    private void updateSetsTable(){
+        player1SetsLabels.get(n).setVisible(true);
+        player2SetsLabels.get(n).setVisible(true);
+        player1SetsLabels.get(n).setText(Integer.toString(match.getPlayer(0).getGamesWon()));
+        player2SetsLabels.get(n).setText(Integer.toString(match.getPlayer(1).getGamesWon()));
+        n++;
     }
 
     private void checkSets(){
