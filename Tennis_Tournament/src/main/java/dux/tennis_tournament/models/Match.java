@@ -1,6 +1,7 @@
 package dux.tennis_tournament.models;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Match {
 
@@ -65,5 +66,15 @@ public class Match {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    // ---------------- utils methods ---------------- //
+
+    public void randomServe(){
+        Random random = new Random();
+        int rdm_int = random.nextInt(10);
+        if(rdm_int <= 5)    getPlayer(0).setServeTurn(true);
+        else getPlayer(1).setServeTurn(true);
+        System.out.println(rdm_int);
     }
 }

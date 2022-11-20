@@ -64,13 +64,22 @@ public class MatchController extends Controller implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        match.randomServe();
         initializeLabels();
+        initializeAnimations();
+
     }
 
     private void initializeLabels(){
         tourNameLabel.setText(tournament.getName());
         namePlayer1.setText(match.getPlayer(0).getName());
         namePlayer2.setText(match.getPlayer(1).getName());
+    }
+
+    private void initializeAnimations(){
+        if(match.getPlayer(0).isServeTurn())    tennisBall1.setVisible(true);
+        else tennisBall2.setVisible(true);
+
     }
     public void salir(ActionEvent event){ System.exit(0);}
 }

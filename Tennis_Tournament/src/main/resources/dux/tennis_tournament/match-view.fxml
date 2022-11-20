@@ -33,7 +33,7 @@
    <ImageView fx:id="tennisBall1" fitHeight="69.0" fitWidth="46.0" layoutX="207.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <Image url="@images/tennis_ball.png" />
    </ImageView>
-   <ImageView fx:id="tennisBall2" fitHeight="69.0" fitWidth="46.0" layoutX="207.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="tennisBall2" fitHeight="69.0" fitWidth="46.0" layoutX="207.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true" visible="false">
       <Image url="@images/tennis_ball.png" />
    </ImageView>
    <Label layoutX="273.0" layoutY="205.0" text="SETS" textAlignment="CENTER" textFill="WHITE">
@@ -121,57 +121,57 @@
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set1Player1" layoutX="575.0" layoutY="258.0" text="0" textFill="WHITE">
+   <Label fx:id="set1Player1" layoutX="575.0" layoutY="258.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set2Player1" layoutX="640.0" layoutY="258.0" text="0" textFill="WHITE">
+   <Label fx:id="set2Player1" layoutX="640.0" layoutY="258.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set3Player1" layoutX="704.0" layoutY="258.0" text="0" textFill="WHITE">
+   <Label fx:id="set3Player1" layoutX="704.0" layoutY="258.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set4Player1" layoutX="769.0" layoutY="257.0" text="0" textFill="WHITE">
+   <Label fx:id="set4Player1" layoutX="769.0" layoutY="257.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set5Player1" layoutX="834.0" layoutY="258.0" text="0" textFill="WHITE">
+   <Label fx:id="set5Player1" layoutX="834.0" layoutY="258.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set1Player2" layoutX="575.0" layoutY="357.0" text="0" textFill="WHITE">
+   <Label fx:id="set1Player2" layoutX="575.0" layoutY="357.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set2Player2" layoutX="640.0" layoutY="357.0" text="0" textFill="WHITE">
+   <Label fx:id="set2Player2" layoutX="640.0" layoutY="357.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set3Player2" layoutX="704.0" layoutY="357.0" text="0" textFill="WHITE">
+   <Label fx:id="set3Player2" layoutX="704.0" layoutY="357.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set4Player2" layoutX="769.0" layoutY="357.0" text="0" textFill="WHITE">
+   <Label fx:id="set4Player2" layoutX="769.0" layoutY="357.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="set5Player2" layoutX="834.0" layoutY="357.0" text="0" textFill="WHITE">
+   <Label fx:id="set5Player2" layoutX="834.0" layoutY="357.0" text="0" textFill="WHITE" visible="false">
       <font>
          <Font size="45.0" />
       </font>
    </Label>
-   <Label fx:id="tourNameLabel" layoutX="338.0" layoutY="48.0" text="tour name" textAlignment="CENTER">
+   <Label fx:id="tourNameLabel" alignment="CENTER" layoutX="338.0" layoutY="48.0" text="tour name" textAlignment="CENTER">
       <font>
          <Font size="50.0" />
       </font>

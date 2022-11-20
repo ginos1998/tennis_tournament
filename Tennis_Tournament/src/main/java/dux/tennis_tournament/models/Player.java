@@ -20,7 +20,6 @@ public class Player {
 
     /**
      * Constructor to initialize player's attributes
-     * @param name
      */
     public Player() {
         setName("none");

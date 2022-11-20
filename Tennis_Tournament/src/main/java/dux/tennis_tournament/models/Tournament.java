@@ -38,4 +38,8 @@ public class Tournament {
     public void setNum_sets(int num_sets) {
         this.num_sets = num_sets;
     }
+
+    // ---------------- utils methods ---------------- //
+
+
 }
