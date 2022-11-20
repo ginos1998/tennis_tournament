@@ -62,7 +62,6 @@ public class MatchController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        match.randomServe();
         initializeLabels();
         tennisBall1.setVisible(false);
         tennisBall1.setVisible(false);
@@ -207,8 +206,19 @@ public class MatchController extends Controller implements Initializable {
     }
 
     private void checkSets(){
-        if((match.getPlayer(0).getSetsWon()) == tournament.getNum_sets()
-                || (match.getPlayer(1).getSetsWon() - 1) == tournament.getNum_sets()){
+
+        if((match.getPlayer(0).getSetsWon() > tournament.getNum_sets()/2
+            && tournament.getNum_sets() - match.getPlayer(0).getSetsWon()
+            < tournament.getNum_sets() - match.getPlayer(1).getSetsWon())
+            || (match.getPlayer(1).getSetsWon() > tournament.getNum_sets()/2
+                && tournament.getNum_sets() - match.getPlayer(1).getSetsWon()
+                < tournament.getNum_sets() - match.getPlayer(0).getSetsWon())){
+
+            task.cancel();
+            timer.cancel();
+            System.out.println("yah, already finished");
+        }
+        else if(match.getPlayer(0).getSetsWon() + match.getPlayer(1).getSetsWon() == tournament.getNum_sets()){
             task.cancel();
             timer.cancel();
             System.out.println("yah, already finished");
