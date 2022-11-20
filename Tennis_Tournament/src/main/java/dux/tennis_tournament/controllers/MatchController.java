@@ -19,8 +19,7 @@ public class MatchController extends Controller implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        match.setCurrentSets(1);
-        System.out.println(match.getCurrentSets());
+
     }
     public void salir(ActionEvent event){ System.exit(0);}
 }
