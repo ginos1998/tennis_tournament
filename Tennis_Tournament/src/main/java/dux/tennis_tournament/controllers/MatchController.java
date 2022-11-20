@@ -56,7 +56,9 @@ public class MatchController extends Controller implements Initializable {
     private Label set5Player2;
     @FXML
     private Label tourNameLabel;
-    private final int TIME_DELAY = 1000;
+    private final int TIME_DELAY = 250;
+    private Timer timer;
+    private TimerTask task;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,19 +93,56 @@ public class MatchController extends Controller implements Initializable {
     }
 
     private void startMatch(){
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        timer = new Timer();
+        task = new TimerTask() {
             @Override
             public void run() {
+                Platform.runLater(() -> checkSets());
                 Platform.runLater(() -> match.randomServe());
                 Platform.runLater(() -> changeAnimation());
+                Platform.runLater(() -> updateTable());
                 Platform.runLater(() -> generatePoints());
-                //checkGame();
+                Platform.runLater(() -> checkPoints());
+                Platform.runLater(() -> checkGames());
 
             }
         };
 
         timer.scheduleAtFixedRate(task, 1000, TIME_DELAY);
+    }
+    private void checkPoints(){
+        if (match.getPlayer(0).getPoints().equals("40") && match.getPlayer(1).getPoints().equals("40")){
+            match.setDeuce(true);
+            System.out.println("deuce");
+        }
+
+        if(!match.isDeuce()){
+            if (match.getPlayer(0).getPoints().equals("AD") && !match.getPlayer(1).getPoints().equals("AD")){
+                match.getPlayer(0).resetPoint();
+                match.getPlayer(1).resetPoint();
+                match.getPlayer(0).addGamesWon();
+            }
+            else if(match.getPlayer(1).getPoints().equals("AD") && !match.getPlayer(0).getPoints().equals("AD")){
+                match.getPlayer(1).resetPoint();
+                match.getPlayer(0).resetPoint();
+                match.getPlayer(1).addGamesWon();
+            }
+        }
+        else {
+            if (match.getPlayer(0).getPoints().equals("-") && !match.getPlayer(1).getPoints().equals("-")){
+                match.getPlayer(0).resetPoint();
+                match.getPlayer(1).resetPoint();
+                match.getPlayer(0).addGamesWon();
+                match.setDeuce(false);
+            }
+            else if(match.getPlayer(1).getPoints().equals("-") && !match.getPlayer(0).getPoints().equals("-")){
+                match.getPlayer(1).resetPoint();
+                match.getPlayer(0).resetPoint();
+                match.getPlayer(1).addGamesWon();
+                match.setDeuce(false);
+            }
+        }
+
     }
     private void generatePoints(){
 
@@ -112,25 +151,45 @@ public class MatchController extends Controller implements Initializable {
 
         if(rdm_int < match.getPlayer(0).getProbToWin()){
             match.getPlayer(0).addPoints();
-            pointsPlayer1.setText(Integer.toString(match.getPlayer(0).getPoints()));
         }
         else{
             match.getPlayer(1).addPoints();
-            pointsPlayer2.setText(Integer.toString(match.getPlayer(1).getPoints()));
         }
     }
 
-    private void checkGame(){
-        if (match.getPlayer(0).getPoints() == 50 && match.getPlayer(1).getPoints() < 40){
-            match.getPlayer(0).addGamesWon();
-            match.getPlayer(0).resetPoint();
-            match.getPlayer(1).resetPoint();
+    private void updateTable(){
+        setsPlayer1.setText(Integer.toString(match.getPlayer(0).getSetsWon()));
+        gamesPlayer1.setText(Integer.toString(match.getPlayer(0).getGamesWon()));
+        pointsPlayer1.setText(match.getPlayer(0).getPoints());
+
+        setsPlayer2.setText(Integer.toString(match.getPlayer(1).getSetsWon()));
+        gamesPlayer2.setText(Integer.toString(match.getPlayer(1).getGamesWon()));
+        pointsPlayer2.setText(match.getPlayer(1).getPoints());
+
+    }
+
+    private void checkGames(){
+        if(match.getPlayer(0).getGamesWon() == 8){
+            match.getPlayer(0).resetGamesWon();
+            match.getPlayer(1).resetGamesWon();
+            match.getPlayer(0).addSetsWon();
         }
-        else if(match.getPlayer(1).getPoints() == 50 && match.getPlayer(0).getPoints() < 40){
-            match.getPlayer(1).addGamesWon();
-            match.getPlayer(1).resetPoint();
-            match.getPlayer(0).resetPoint();
+        else if (match.getPlayer(1).getGamesWon() == 8){
+            match.getPlayer(0).resetGamesWon();
+            match.getPlayer(1).resetGamesWon();
+            match.getPlayer(1).addSetsWon();
         }
+    }
+
+    private void checkSets(){
+        if((match.getPlayer(0).getSetsWon()) == tournament.getNum_sets()
+                || (match.getPlayer(1).getSetsWon() - 1) == tournament.getNum_sets()){
+            task.cancel();
+            timer.cancel();
+            System.out.println("yah, already finished");
+        }
+
+
     }
 
     public void salir(ActionEvent event){ System.exit(0);}

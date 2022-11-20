@@ -15,24 +15,29 @@ public class Player {
     private int probToWin;
     private int setsWon;
     private int gamesWon;
-    private int points;
+    private String points;
     private int pointsWon;
     private ArrayList<Integer> prevSetsWon;
-    private ArrayList<Integer> gamePoints;
+    private ArrayList<String> gamePoints;
 
     /**
      * Constructor to initialize player's attributes
      */
     public Player() {
         gamePoints = new ArrayList<>();
-        gamePoints.add(15);
-        gamePoints.add(30);
-        gamePoints.add(40);
-        gamePoints.add(50);
+        gamePoints.add("0");
+        gamePoints.add("15");
+        gamePoints.add("30");
+        gamePoints.add("40");
+        gamePoints.add("AD");
+        gamePoints.add("-");
+        points = gamePoints.get(0);
         setName("none");
         setWinner(false);
         setServeTurn(false);
         setProbToWin(0);
+        setsWon = 0;
+        gamesWon = 0;
         prevSetsWon = new ArrayList<>();
     }
 
@@ -62,7 +67,7 @@ public class Player {
         return gamesWon;
     }
 
-    public int getPoints() {
+    public String getPoints() {
         return points;
     }
 
@@ -90,7 +95,9 @@ public class Player {
         else
             this.probToWin = 50;
     }
-
+    public void resetGamesWon(){
+        this.gamesWon = 0;
+    }
     public void addSetsWon() {
         this.setsWon++;
     }
@@ -100,14 +107,14 @@ public class Player {
     }
 
     public void addPoints() {
-        this.points += 10;
-        //this.points = gamePoints.get(pointsWon);
+        this.points = gamePoints.get(pointsWon);
         pointsWon++;
+        if(pointsWon == gamePoints.size())  pointsWon = 0;
     }
 
     public void resetPoint(){
         this.pointsWon = 0;
-        this.points = 0;
+        this.points = gamePoints.get(pointsWon);
     }
 
     public void setPrevSetsWon(ArrayList<Integer> prevSetsWon) {
