@@ -2,9 +2,180 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dux.tennis_tournament.controllers.MatchController">
-    <Label layoutX="424.0" layoutY="242.0" text="omg hiii" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d8600" height="500.0" stroke="BLACK" strokeType="INSIDE" width="900.0" />
    <Button layoutX="840.0" layoutY="462.0" mnemonicParsing="false" onAction="#salir" text="salir" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="269.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfbfba" height="69.0" layoutX="50.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="139.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfbfba" height="100.0" layoutX="287.0" layoutY="28.0" stroke="BLACK" strokeType="INSIDE" width="362.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfbfba" height="69.0" layoutX="50.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="139.0" />
+   <Label layoutX="59.0" layoutY="205.0" text="JUGADORES" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label fx:id="namePlayer1" layoutX="60.0" layoutY="272.0" prefHeight="25.0" prefWidth="112.0" text="p1" textAlignment="CENTER">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <Label fx:id="namePlayer2" layoutX="64.0" layoutY="372.0" prefHeight="25.0" prefWidth="112.0" text="p2" textAlignment="CENTER">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Label>
+   <ImageView fx:id="tennisBall1" fitHeight="69.0" fitWidth="46.0" layoutX="207.0" layoutY="262.0" pickOnBounds="true"
+              preserveRatio="true" visible="false">
+      <Image url="@images/tennis_ball.png"/>
+   </ImageView>
+   <ImageView fx:id="tennisBall2" fitHeight="69.0" fitWidth="46.0" layoutX="207.0" layoutY="361.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@images/tennis_ball.png"/>
+   </ImageView>
+   <Label layoutX="273.0" layoutY="205.0" text="SETS" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="269.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Label layoutX="347.0" layoutY="205.0" text="GAMES" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="351.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="351.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Label layoutX="434.0" layoutY="205.0" text="POINTS" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="431.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="74.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d756" height="69.0" layoutX="431.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="74.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="560.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="625.0" layoutY="251.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="689.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="754.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="819.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="560.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="625.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="689.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="754.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56555b" height="69.0" layoutX="819.0" layoutY="350.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+   <Label layoutX="565.0" layoutY="207.0" text="SET 1" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="630.0" layoutY="207.0" text="SET 2" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="694.0" layoutY="207.0" text="SET 3" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="759.0" layoutY="207.0" text="SET 4" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label layoutX="824.0" layoutY="207.0" text="SET 5" textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
+   <Label fx:id="pointsPlayer1" layoutX="439.0" layoutY="258.0" text="00">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="pointsPlayer2" layoutX="439.0" layoutY="357.0" text="00">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="gamesPlayer1" layoutX="365.0" layoutY="258.0" text="0">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="gamesPlayer2" layoutX="366.0" layoutY="357.0" text="0">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="setsPlayer2" layoutX="284.0" layoutY="357.0" text="0">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="setsPlayer1" layoutX="284.0" layoutY="257.0" text="0">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set1Player1" layoutX="575.0" layoutY="258.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set2Player1" layoutX="640.0" layoutY="258.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set3Player1" layoutX="704.0" layoutY="258.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set4Player1" layoutX="769.0" layoutY="257.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set5Player1" layoutX="834.0" layoutY="258.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set1Player2" layoutX="575.0" layoutY="357.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set2Player2" layoutX="640.0" layoutY="357.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set3Player2" layoutX="704.0" layoutY="357.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set4Player2" layoutX="769.0" layoutY="357.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label fx:id="set5Player2" layoutX="834.0" layoutY="357.0" text="0" textFill="WHITE">
+      <font>
+         <Font size="45.0" />
+      </font>
+   </Label>
+   <Label layoutX="338.0" layoutY="48.0" text="tour name" textAlignment="CENTER">
+      <font>
+         <Font size="50.0" />
+      </font>
+   </Label>
 </AnchorPane>
