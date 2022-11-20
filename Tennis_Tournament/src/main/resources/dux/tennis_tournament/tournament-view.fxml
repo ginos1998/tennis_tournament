@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dux.tennis_tournament.controllers.TournamentController">
+   <Button layoutX="839.0" layoutY="459.0" mnemonicParsing="false" onAction="#salir" text="Salir" />
+   <Label layoutX="309.0" layoutY="150.0" text="¡BIENVENIDO AL TORNEO!">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="139.0" fitWidth="250.0" layoutX="303.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@images/tournament-logo.png" />
+   </ImageView>
+   <Label layoutX="184.0" layoutY="174.0" text="Complete los siguientes campos para iniciar la simulacion del partido">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <Label layoutX="298.0" layoutY="242.0" text="Jugador n°1" />
+   <Label layoutX="473.0" layoutY="242.0" text="Jugador n°2" />
+   <Label layoutX="275.0" layoutY="205.0" text="Nombre del torneo" />
+   <TextField layoutX="275.0" layoutY="268.0" prefHeight="24.0" prefWidth="123.0" />
+   <Label layoutX="336.0" layoutY="362.0" text="Probabilidades de ganar (%)" />
+   <TextField layoutX="450.0" layoutY="268.0" prefHeight="24.0" prefWidth="123.0" />
+   <TextField layoutX="450.0" layoutY="202.0" prefHeight="24.0" prefWidth="123.0" />
+   <Label layoutX="282.0" layoutY="414.0" text="Cantidad de sets" />
+   <Slider fx:id="probSlider" layoutX="320.0" layoutY="320.0" majorTickUnit="49.0" min="1.0" minorTickCount="5" prefHeight="16.0" prefWidth="217.0" showTickLabels="true" showTickMarks="true" />
+   <ChoiceBox fx:id="choiceNumSets" layoutX="485.0" layoutY="410.0" prefHeight="24.0" prefWidth="54.0" />
+   <Button layoutX="361.0" layoutY="459.0" mnemonicParsing="false" onAction="#startMatch" text="Comenzar Partido" />
+</AnchorPane>

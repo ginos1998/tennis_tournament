@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dux.tennis_tournament.controllers.MatchController">
+    <Label layoutX="424.0" layoutY="242.0" text="omg hiii" />
+   <Button layoutX="840.0" layoutY="462.0" mnemonicParsing="false" onAction="#salir" text="salir" />
+</AnchorPane>
