@@ -10,11 +10,10 @@ public class Match {
     private String tournamentName;
     private ArrayList<Player> players;
 
-
-    public Match() {
+    public Match(Player player_1, Player player_2) {
         players = new ArrayList<>();
-        players.add(null);
-        players.add(null);
+        players.add(player_1);
+        players.add(player_2);
         setDeuce(false);
         setCurrentSets(0);
         setTieBreak(false);
@@ -41,6 +40,10 @@ public class Match {
 
     public ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public Player getPlayer(int player){
+        return players.get(player);
     }
 
     // ---------------- Setter methods ---------------- //

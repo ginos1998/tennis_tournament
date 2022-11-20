@@ -1,5 +1,6 @@
 package dux.tennis_tournament.controllers;
 
+import dux.tennis_tournament.models.Match;
 import dux.tennis_tournament.models.Player;
 import dux.tennis_tournament.models.Tournament;
 import javafx.beans.value.ChangeListener;
@@ -39,13 +40,12 @@ public class TournamentController extends Controller implements Initializable {
     private Slider probSlider;
     @FXML
     private ChoiceBox choiceNumSets;
-    private Tournament tournament;
     private Player player_1;
     private Player player_2;
     private Integer[] sets = {3, 5};
 
     public TournamentController(){
-        tournament = new Tournament();
+        //tournament = new Tournament();
         player_1 = new Player();
         player_2 = new Player();
     }
@@ -58,20 +58,20 @@ public class TournamentController extends Controller implements Initializable {
     }
 
     private void SliderListener(){
+        updateSlider();
+        probSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                updateSlider();
+            }
+        });
+    }
+
+    private void updateSlider(){
         player_1.setProbToWin(100 - (int) probSlider.getValue());
         player_2.setProbToWin((int) probSlider.getValue());
         probP1.setText(player_1.getProbToWin() + " %");
         probP2.setText(player_2.getProbToWin() + " %");
-
-        probSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                player_1.setProbToWin(100 - (int) probSlider.getValue());
-                player_2.setProbToWin((int) probSlider.getValue());
-                probP1.setText(player_1.getProbToWin() + " %");
-                probP2.setText(player_2.getProbToWin() + " %");
-            }
-        });
     }
 
     private void ChoiceBoxNumSets(){
@@ -86,6 +86,7 @@ public class TournamentController extends Controller implements Initializable {
     public void startMatch(ActionEvent event) throws IOException {
         if(setFieldBox()){
             errorMessege.setVisible(false);
+            match = new Match(player_1, player_2);
             this.parent = FXMLLoader.load(getClass().getResource("/dux/tennis_tournament/match-view.fxml"));
             this.stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             this.scene = new Scene(this.parent);
@@ -93,8 +94,6 @@ public class TournamentController extends Controller implements Initializable {
             this.stage.show();
         }
         else errorMessege.setVisible(true);
-
-
     }
 
     private boolean setFieldBox(){

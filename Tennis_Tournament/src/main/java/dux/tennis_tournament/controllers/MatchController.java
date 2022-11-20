@@ -2,6 +2,7 @@ package dux.tennis_tournament.controllers;
 
 import dux.tennis_tournament.models.Match;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -15,33 +16,61 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MatchController extends Controller implements Initializable {
-    public Label namePlayer1;
-    public Label namePlayer2;
-    public ImageView tennisBall1;
-    public ImageView tennisBall2;
-    public Label pointsPlayer1;
-    public Label pointsPlayer2;
-    public Label gamesPlayer1;
-    public Label gamesPlayer2;
-    public Label setsPlayer2;
-    public Label setsPlayer1;
-    public Label set1Player1;
-    public Label set2Player1;
-    public Label set3Player1;
-    public Label set4Player1;
-    public Label set5Player1;
-    public Label set1Player2;
-    public Label set2Player2;
-    public Label set3Player2;
-    public Label set4Player2;
-    public Label set5Player2;
-    private Match match;
+    @FXML
+    private Label namePlayer1;
+    @FXML
+    private Label namePlayer2;
+    @FXML
+    private ImageView tennisBall1;
+    @FXML
+    private ImageView tennisBall2;
+    @FXML
+    private Label pointsPlayer1;
+    @FXML
+    private Label pointsPlayer2;
+    @FXML
+    private Label gamesPlayer1;
+    @FXML
+    private Label gamesPlayer2;
+    @FXML
+    private Label setsPlayer2;
+    @FXML
+    private Label setsPlayer1;
+    @FXML
+    private Label set1Player1;
+    @FXML
+    private Label set2Player1;
+    @FXML
+    private Label set3Player1;
+    @FXML
+    private Label set4Player1;
+    @FXML
+    private Label set5Player1;
+    @FXML
+    private Label set1Player2;
+    @FXML
+    private Label set2Player2;
+    @FXML
+    private Label set3Player2;
+    @FXML
+    private Label set4Player2;
+    @FXML
+    private Label set5Player2;
+    @FXML
+    private Label tourNameLabel;
+
     public MatchController(){
-        match = new Match();
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initializeLabels();
+    }
 
+    private void initializeLabels(){
+        tourNameLabel.setText(tournament.getName());
+        namePlayer1.setText(match.getPlayer(0).getName());
+        namePlayer2.setText(match.getPlayer(1).getName());
     }
     public void salir(ActionEvent event){ System.exit(0);}
 }
