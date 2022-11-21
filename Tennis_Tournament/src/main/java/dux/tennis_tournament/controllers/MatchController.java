@@ -82,8 +82,8 @@ public class MatchController extends Controller implements Initializable {
      * after configure labels properties,
      * start the match simulation
      *
-     * @param url
-     * @param resourceBundle
+     * @param url idk
+     * @param resourceBundle idk
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
