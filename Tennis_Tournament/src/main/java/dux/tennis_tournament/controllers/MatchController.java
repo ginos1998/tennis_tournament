@@ -68,6 +68,10 @@ public class MatchController extends Controller implements Initializable {
     private Timer timer;
     private TimerTask task;
     private ArrayList<ArrayList<Label>> setsLabels;
+    private ArrayList<Label> playerGamesLabel;
+    private ArrayList<Label> playerPointsLabel;
+    private ArrayList<Label> playerSetsLabel;
+    private ArrayList<ImageView> tennisBallImage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -81,8 +85,7 @@ public class MatchController extends Controller implements Initializable {
     private void initializeLabels(){
 
         ArrayList<Label> playerName = new ArrayList<>(Arrays.asList(
-                namePlayer1,
-                namePlayer2
+                namePlayer1, namePlayer2
         ));
 
         ArrayList<Label> setsLabelsLocal = new ArrayList<>(Arrays.asList(
@@ -94,6 +97,10 @@ public class MatchController extends Controller implements Initializable {
         ));
 
         setsLabels = new ArrayList<>(Arrays.asList(setsLabelsLocal, setsLabelsVisitant));
+        playerGamesLabel = new ArrayList<>(Arrays.asList(gamesPlayer1, gamesPlayer2));
+        playerPointsLabel = new ArrayList<>(Arrays.asList(pointsPlayer1, pointsPlayer2));
+        playerSetsLabel = new ArrayList<>(Arrays.asList(setsPlayer1, setsPlayer2));
+        tennisBallImage = new ArrayList<>(Arrays.asList(tennisBall1, tennisBall2));
 
         for (int i = 0; i<match.getPlayers().size(); i++)
             playerName.get(i).setText(match.getPlayer(i).getName());
@@ -102,16 +109,9 @@ public class MatchController extends Controller implements Initializable {
     }
 
     private void changeAnimation(){
-        if(match.getPlayer(0).isServeTurn()) {
-            tennisBall1.setVisible(true);
-            tennisBall2.setVisible(false);
+        for(int index=0; index<match.getPlayers().size(); index++){
+            tennisBallImage.get(index).setVisible(match.getPlayer(index).isServeTurn());
         }
-        else{
-            tennisBall1.setVisible(false);
-            tennisBall2.setVisible(true);
-        }
-
-
     }
 
     private void startMatch(){
@@ -189,13 +189,12 @@ public class MatchController extends Controller implements Initializable {
     }
 
     private void updateTable(){
-        setsPlayer1.setText(Integer.toString(match.getPlayer(0).getSetsWon()));
-        gamesPlayer1.setText(Integer.toString(match.getPlayer(0).getGamesWon()));
-        pointsPlayer1.setText(match.getPlayer(0).getPoints());
 
-        setsPlayer2.setText(Integer.toString(match.getPlayer(1).getSetsWon()));
-        gamesPlayer2.setText(Integer.toString(match.getPlayer(1).getGamesWon()));
-        pointsPlayer2.setText(match.getPlayer(1).getPoints());
+        for (int index=0; index<match.getPlayers().size(); index++){
+            playerSetsLabel.get(index).setText(Integer.toString(match.getPlayer(index).getSetsWon()));
+            playerGamesLabel.get(index).setText(Integer.toString(match.getPlayer(index).getGamesWon()));
+            playerPointsLabel.get(index).setText(match.getPlayer(index).getPoints());
+        }
     }
 
     private void checkGames(){
