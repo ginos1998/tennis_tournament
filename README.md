@@ -41,10 +41,10 @@ También es posible ejecutarlo haciendo doble click sobre el archivo.
 En el siguiente [link](https://drive.google.com/file/d/188oVOnfPHRWTRIgx7zK9h1HN8weB-IJ-/view) 
 encontrrás un video de demostración. A continuación, se muestran algunas capturas durante la simulacion:
 
-![inicio](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-25-08.png)
-![Configuracion](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-30-11.png)
-![Simulacion](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-31-32.png)
-![Resultados](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-32-28.png)
+![inicio](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-25-08.png "Pantalla de inicio")
+![Configuracion](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-30-11.png "Vista nfiguracion")
+![Simulacion](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-31-32.png "Durante la simulacion")
+![Resultados](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-32-28.png "Resultados del partido")
 
 
 
