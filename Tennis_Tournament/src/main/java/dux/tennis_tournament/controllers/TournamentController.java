@@ -2,7 +2,7 @@ package dux.tennis_tournament.controllers;
 
 import dux.tennis_tournament.models.Match;
 import dux.tennis_tournament.models.Player;
-import dux.tennis_tournament.models.Tournament;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 public class TournamentController extends Controller implements Initializable {
 
     @FXML
-    private Label errorMessege;
+    private Label errorMessage;
     @FXML
     private TextField player1NameField;
     @FXML
@@ -42,7 +42,7 @@ public class TournamentController extends Controller implements Initializable {
     private ChoiceBox choiceNumSets;
     private Player player_1;
     private Player player_2;
-    private Integer[] sets = {3, 5};
+    private final int STR_MAX_LENGTH = 8;
 
     public TournamentController(){
         //tournament = new Tournament();
@@ -52,7 +52,6 @@ public class TournamentController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         SliderListener();
         ChoiceBoxNumSets();
     }
@@ -75,6 +74,7 @@ public class TournamentController extends Controller implements Initializable {
     }
 
     private void ChoiceBoxNumSets(){
+        Integer[] sets = {3, 5};
         choiceNumSets.getItems().addAll(sets);
         choiceNumSets.setOnAction(this::setNumSets);
     }
@@ -85,7 +85,7 @@ public class TournamentController extends Controller implements Initializable {
 
     public void startMatch(ActionEvent event) throws IOException {
         if(setFieldBox()){
-            errorMessege.setVisible(false);
+            errorMessage.setVisible(false);
             match = new Match(player_1, player_2);
             this.parent = FXMLLoader.load(getClass().getResource("/dux/tennis_tournament/match-view.fxml"));
             this.stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -93,14 +93,14 @@ public class TournamentController extends Controller implements Initializable {
             this.stage.setScene(this.scene);
             this.stage.show();
         }
-        else errorMessege.setVisible(true);
+        else errorMessage.setVisible(true);
     }
 
     private boolean setFieldBox(){
 
-        if(tournamentNameField.getText().length() >= 6
-            && player1NameField.getText().length() >= 6
-            && player2NameField.getText().length() >= 6){
+        if(tournamentNameField.getText().length() >= STR_MAX_LENGTH
+            && player1NameField.getText().length() >= STR_MAX_LENGTH
+            && player2NameField.getText().length() >= STR_MAX_LENGTH){
 
             tournament.setName(tournamentNameField.getText());
             player_1.setName(player1NameField.getText());
@@ -110,8 +110,9 @@ public class TournamentController extends Controller implements Initializable {
         }
         else return false;
     }
-
-    public void salir(ActionEvent event){ System.exit(0);}
+    @Override
+    @FXML
+    void salir(ActionEvent event){ System.exit(0);}
 
 
 }

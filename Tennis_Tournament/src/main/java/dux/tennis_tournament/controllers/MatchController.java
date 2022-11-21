@@ -64,12 +64,10 @@ public class MatchController extends Controller implements Initializable {
     private Label set5Player2;
     @FXML
     private Label tourNameLabel;
-    private final int TIME_DELAY = 500;
+    private final int TIME_DELAY = 200;
     private Timer timer;
     private TimerTask task;
-    private ArrayList<Label> player1SetsLabels;
-    private ArrayList<Label> player2SetsLabels;
-    private int n = 0;
+    private ArrayList<ArrayList<Label>> setsLabels;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,30 +75,30 @@ public class MatchController extends Controller implements Initializable {
         tennisBall1.setVisible(false);
         tennisBall1.setVisible(false);
 
-        System.out.println("prob p1 " + match.getPlayer(0).getProbToWin());
-        System.out.println("prob p2 " + match.getPlayer(1).getProbToWin());
-
         startMatch();
     }
 
     private void initializeLabels(){
+
+        ArrayList<Label> playerName = new ArrayList<>(Arrays.asList(
+                namePlayer1,
+                namePlayer2
+        ));
+
+        ArrayList<Label> setsLabelsLocal = new ArrayList<>(Arrays.asList(
+                set1Player1, set2Player1, set3Player1, set4Player1, set5Player1
+        ));
+
+        ArrayList<Label> setsLabelsVisitant = new ArrayList<>(Arrays.asList(
+                set1Player2, set2Player2, set3Player2, set4Player2, set5Player2
+        ));
+
+        setsLabels = new ArrayList<>(Arrays.asList(setsLabelsLocal, setsLabelsVisitant));
+
+        for (int i = 0; i<match.getPlayers().size(); i++)
+            playerName.get(i).setText(match.getPlayer(i).getName());
+
         tourNameLabel.setText(tournament.getName());
-        namePlayer1.setText(match.getPlayer(0).getName());
-        namePlayer2.setText(match.getPlayer(1).getName());
-
-        player1SetsLabels = new ArrayList<>();
-        player1SetsLabels.add(set1Player1);
-        player1SetsLabels.add(set2Player1);
-        player1SetsLabels.add(set3Player1);
-        player1SetsLabels.add(set4Player1);
-        player1SetsLabels.add(set5Player1);
-
-        player2SetsLabels = new ArrayList<>();
-        player2SetsLabels.add(set1Player2);
-        player2SetsLabels.add(set2Player2);
-        player2SetsLabels.add(set3Player2);
-        player2SetsLabels.add(set4Player2);
-        player2SetsLabels.add(set5Player2);
     }
 
     private void changeAnimation(){
@@ -216,11 +214,19 @@ public class MatchController extends Controller implements Initializable {
     }
 
     private void updateSetsTable(){
-        player1SetsLabels.get(n).setVisible(true);
+        int label = match.getPlayer(0).getSetsWon() + match.getPlayer(1).getSetsWon();
+
+        for(int player=0; player<match.getPlayers().size(); player++){
+            setsLabels.get(player).get(label).setVisible(true);
+            setsLabels.get(player).get(label).setText(Integer.toString(match.getPlayer(player).getGamesWon()));
+        }
+
+
+        /*player1SetsLabels.get(n).setVisible(true);
         player2SetsLabels.get(n).setVisible(true);
         player1SetsLabels.get(n).setText(Integer.toString(match.getPlayer(0).getGamesWon()));
         player2SetsLabels.get(n).setText(Integer.toString(match.getPlayer(1).getGamesWon()));
-        n++;
+        n++;*/
     }
 
     private void checkSets(){
@@ -251,8 +257,9 @@ public class MatchController extends Controller implements Initializable {
 
         }
     }
-
-    public void salir(ActionEvent event){
+    @Override
+    @FXML
+    void salir(ActionEvent event){
         if(match.isMatchRunning()) {
             match.disableMatchRunning();
             task.cancel();
@@ -276,4 +283,5 @@ public class MatchController extends Controller implements Initializable {
         this.stage.setScene(this.scene);
         this.stage.show();
     }
+
 }
