@@ -25,7 +25,7 @@ public class Player {
      */
     public Player() {
         gamePoints = new ArrayList<>();
-        gamePoints.add("0");
+        gamePoints.add("00");
         gamePoints.add("15");
         gamePoints.add("30");
         gamePoints.add("40");
@@ -114,6 +114,11 @@ public class Player {
 
     public void resetPoint(){
         this.pointsWon = 0;
+        this.points = gamePoints.get(pointsWon);
+    }
+
+    public void removeAdventage(){
+        pointsWon-=2;
         this.points = gamePoints.get(pointsWon);
     }
 

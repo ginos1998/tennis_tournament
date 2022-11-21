@@ -1,5 +1,6 @@
 package dux.tennis_tournament.controllers;
 
+import dux.tennis_tournament.models.Player;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,7 +54,7 @@ public class MatchController extends Controller implements Initializable {
     private Label set5Player2;
     @FXML
     private Label tourNameLabel;
-    private final int TIME_DELAY = 250;
+    private final int TIME_DELAY = 500;
     private Timer timer;
     private TimerTask task;
     private ArrayList<Label> player1SetsLabels;
@@ -152,6 +153,16 @@ public class MatchController extends Controller implements Initializable {
                 match.getPlayer(0).resetPoint();
                 match.getPlayer(1).addGamesWon();
                 match.setDeuce(false);
+            } else if (match.getPlayer(0).getPoints().equals("AD") && match.getPlayer(1).getPoints().equals("AD")) {
+                for (Player p: match.getPlayers()) {
+                    System.out.println("in " + p.getPoints());
+                }
+                match.getPlayer(0).removeAdventage();
+                match.getPlayer(1).removeAdventage();
+
+                for (Player p: match.getPlayers()) {
+                    System.out.println("out " + p.getPoints());
+                }
             }
         }
 
@@ -177,9 +188,6 @@ public class MatchController extends Controller implements Initializable {
         setsPlayer2.setText(Integer.toString(match.getPlayer(1).getSetsWon()));
         gamesPlayer2.setText(Integer.toString(match.getPlayer(1).getGamesWon()));
         pointsPlayer2.setText(match.getPlayer(1).getPoints());
-
-
-
     }
 
     private void checkGames(){
