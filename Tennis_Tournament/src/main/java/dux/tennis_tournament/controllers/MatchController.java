@@ -252,8 +252,6 @@ public class MatchController extends Controller implements Initializable {
         }
     }
 
-
-
     public void salir(ActionEvent event){
         if(match.isMatchRunning()) {
             match.disableMatchRunning();

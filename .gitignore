@@ -5,6 +5,8 @@ mvnw.cmd
 
 # java
 .idea
+.out
+META-INF/
 target
 Tennis_Tournament.iml
 
