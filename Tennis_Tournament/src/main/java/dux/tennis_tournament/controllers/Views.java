@@ -13,15 +13,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Views extends Controller implements Initializable{
-
-    public Views() {
-    }
-
+    /**
+     * No constructor needed
+     */
+    public Views() {}
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public void initialize(URL arg0, ResourceBundle arg1) {}
 
-    }
-
+    /**
+     * Open tournament-view when user click on "Iniciar Torneo" button
+     *
+     * @param event button event
+     * @throws IOException exception handler for javafx.fxml.FXMLLoader.load()
+     */
     public void startTournament(ActionEvent event) throws IOException {
         this.parent = FXMLLoader.load(getClass().getResource("/dux/tennis_tournament/tournament-view.fxml"));
         this.stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -30,6 +34,11 @@ public class Views extends Controller implements Initializable{
         this.stage.show();
     }
 
+    /**
+     * Close program window and stop it
+     *
+     * @param event button event
+     */
     @Override
     @FXML
     void salir(ActionEvent event) {

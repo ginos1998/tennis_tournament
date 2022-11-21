@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Start main view and its controller
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
