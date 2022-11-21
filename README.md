@@ -41,7 +41,7 @@ También es posible ejecutarlo haciendo doble click sobre el archivo.
 En el siguiente [link](https://drive.google.com/file/d/188oVOnfPHRWTRIgx7zK9h1HN8weB-IJ-/view) 
 encontrrás un video de demostración. A continuación, se muestran algunas capturas durante la simulacion:
 
-![inicio](https://drive.google.com/file/d/1bhcHM1kAqHBJLKQodiTQEWiZN_uwPZeX/view)
+![inicio](https://github.com/ginos1998/tennis_tournament/blob/main/Docs/Images/Captura%20desde%202022-11-21%2019-25-08.png)
 ![Configuracion](https://drive.google.com/file/d/1roqPaOARVonJUn2RaFS1fKKHHYHjniKt/view)
 ![Simulacion](https://drive.google.com/file/d/1Kcnd4vZKzqtzGKxDujQCKmJqPmz6c-L1/view)
 ![Resultados](https://drive.google.com/file/d/1JVKjtydIcRgSi5abcUlnrxztgZPFG9fe/view)
