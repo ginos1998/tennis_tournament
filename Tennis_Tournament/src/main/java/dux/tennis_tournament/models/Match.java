@@ -12,6 +12,7 @@ public class Match {
     private String tournamentName;
     private ArrayList<Player> players;
 
+    private boolean matchRunning;
 
     public Match(Player player_1, Player player_2) {
         players = new ArrayList<>();
@@ -25,6 +26,9 @@ public class Match {
 
     // ---------------- Getter methods ---------------- //
 
+    public boolean isMatchRunning(){
+        return matchRunning;
+    }
     public boolean isDeuce() {
         return deuce;
     }
@@ -50,6 +54,13 @@ public class Match {
     }
 
     // ---------------- Setter methods ---------------- //
+    public void setMatchRunning() {
+        matchRunning = true;
+    }
+
+    public void disableMatchRunning(){
+        matchRunning = false;
+    }
     public void setDeuce(boolean deuce) {
         this.deuce = deuce;
     }

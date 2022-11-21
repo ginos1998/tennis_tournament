@@ -24,6 +24,7 @@ public class Player {
      * Constructor to initialize player's attributes
      */
     public Player() {
+        prevSetsWon = new ArrayList<>();
         gamePoints = new ArrayList<>();
         gamePoints.add("00");
         gamePoints.add("15");
@@ -31,14 +32,11 @@ public class Player {
         gamePoints.add("40");
         gamePoints.add("AD");
         gamePoints.add("-");
-        points = gamePoints.get(0);
         setName("none");
         setWinner(false);
         setServeTurn(false);
         setProbToWin(0);
-        setsWon = 0;
-        gamesWon = 0;
-        prevSetsWon = new ArrayList<>();
+        reset();
     }
 
     // ---------------- Getter methods ---------------- //
@@ -117,11 +115,19 @@ public class Player {
         this.points = gamePoints.get(pointsWon);
     }
 
-    public void removeAdventage(){
+    public void removeAdvantage(){
         pointsWon-=2;
         this.points = gamePoints.get(pointsWon);
     }
 
+    public void reset(){
+        points = gamePoints.get(0);
+        serveTurn = false;
+        winner = false;
+        setsWon = 0;
+        gamesWon = 0;
+        pointsWon = 0;
+    }
 
 
 
