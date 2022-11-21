@@ -9,4 +9,8 @@ mvnw.cmd
 META-INF/
 target
 Tennis_Tournament.iml
+Tennis_Tournament/dependency-reduced-pom.xml
+
+# docs
+.odt
 
